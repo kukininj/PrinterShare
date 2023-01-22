@@ -1,0 +1,138 @@
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10vw;
+    margin: auto;
+}
+
+.logo {
+    width: 25vw;
+    height: 25vw;
+    overflow: visible;
+}
+
+.logo>path {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, .30));
+}
+
+.login_box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 21px 42px;
+
+    background: #FCEAFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, .30));
+    border-radius: 35px;
+
+    /* Inside auto layout */
+    flex: none;
+    flex-grow: 0;
+
+    /*font*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 20px;
+    color: #484848;
+}
+
+.input_box>input {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    color: rgba(92, 49, 162, 0.5);
+    border: 3px solid #636363;
+    border-radius: 70px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    background: none;
+}
+
+.login_box>input[type=submit] {
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 15px;
+
+    background: #FFBE52;
+    border: none;
+    border-radius: 50px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    transition: 0.3s;
+
+    color: #484848;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.login_box>input[type=submit]:focus {
+    background: #EFAE42;
+}
+
+.login_box>input[type=submit]:hover {
+    background: #EFAE42;
+}
+
+.text_logo {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .input_box>input {
+        width: 60vw;
+        font-size: large;
+        padding: 1vw 5vw;
+    }
+
+    .text_logo {
+        display: flex;
+        width: 50vw;
+        margin: 5vw;
+    }
+
+    .text_logo {
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, .30));
+    }
+
+    .logo {
+        margin: 5vw;
+        width: 300px;
+        height: 300px;
+    }
+
+    body {
+        min-width: unset;
+    }
+
+    main {
+        min-width: unset;
+        flex-direction: column-reverse;
+        gap: 1vw;
+    }
+}

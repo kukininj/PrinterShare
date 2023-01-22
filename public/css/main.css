@@ -1,0 +1,32 @@
+body {
+    position: fixed;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+}
+
+main {
+    margin: auto;
+    max-width: 1400px;
+    min-width: 800px;
+}
+
+.background {
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(221.29deg, #8972A4 23.38%, #5C31A2 109.88%, #FCEAFF 109.89%);
+}
+
+
+::selection {
+    background: #ffe48c;
+}
+
+input:focus {
+    outline: solid #ffe48c70;
+}

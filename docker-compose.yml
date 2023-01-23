@@ -27,6 +27,23 @@ services:
     environment:
       XDEBUG_MODE: debug
       XDEBUG_CONFIG: client_host=172.17.0.1 client_port=9003
+        
+  database:
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: printershare
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - .:/postgres/
+    networks:
+      - internal
+    ports:
+      - "5433:5432"
+
+
 networks:
   internal:
     driver: bridge

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +48,7 @@
         <form class="login_box" action="/register.php">
             <div class="input_box">
                 <p>Nazwa użytkownika</p>
-                <input type="text" name="name" placeholder="jankaski" />
+                <input type="text" name="username" placeholder="jankaski" />
             </div>
             <div class="input_box">
                 <p>e-mail</p>
@@ -59,9 +60,16 @@
             </div>
             <div class="input_box">
                 <p>Hasło</p>
-                <input type="password" name="login" placeholder="¯\_(ツ)_/¯" />
+                <input type="password" name="password" placeholder="¯\_(ツ)_/¯" />
             </div>
-            <input type="submit" value="Zaloguj się">
+            <div class="merchant_checkbox">
+                <p>Czy chcesz zostać sprzedawcą?</p>
+                <input type="checkbox" name="merchant">
+                <select class="area_pick" name="area">
+                    <option value="krakow">Kraków</option>
+                </select>
+            </div>
+            <input type="submit" value="Zarejestruj się">
         </form>
         <img class="text_logo" src="/public/resources/svg/logo.svg" alt="" srcset="">
     </main>

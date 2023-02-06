@@ -1,15 +1,34 @@
 body {
-    position: fixed;
     margin: auto;
-    height: 100%;
-    width: 100%;
-    overflow: scroll;
+}
+
+* {
+    transition: 0.3s ease-in-out;
 }
 
 main {
     margin: auto;
-    max-width: 1400px;
-    min-width: 800px;
+    max-width: 1000px;
+}
+
+header {
+   display: flex;
+   flex-direction: row; 
+   margin: 3vw;
+   padding: 0;
+   gap: 10px;
+   transition: 0;
+   overflow: hidden;
+}
+
+hr.vertical {
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    width: 1px;
+    height: auto;
+    border: none;
+    background-color: black;
 }
 
 .background {
@@ -17,7 +36,7 @@ main {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
+    height: 110%;
     width: 100%;
     background: linear-gradient(221.29deg, #8972A4 23.38%, #5C31A2 109.88%, #FCEAFF 109.89%);
 }
@@ -29,4 +48,13 @@ main {
 
 input:focus {
     outline: solid #ffe48c70;
+}
+
+.gold-focus:focus {
+    outline: solid #ffe48c;
+    background: #ffe48c20;
+}
+
+.gold-hover:hover {
+    background: #ffe48c40;
 }

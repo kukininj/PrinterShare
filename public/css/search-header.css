@@ -152,7 +152,13 @@
 
     .header-menu {
         order: 2;
+        height: 60px;
         padding: 5px 10px;
+    }
+    
+    .header-menu>*>svg {
+        width: 30px;
+        height: 30px;
     }
 
     .searchbar {

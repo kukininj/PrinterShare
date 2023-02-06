@@ -56,6 +56,7 @@ main {
 .offer>img {
     height: 180px;
     width: 180px;
+    border-radius: 20px;
 }
 
 .offer-info {
@@ -103,7 +104,6 @@ main {
         height: 120px;
         width: 120px;
         background-color: #FEF6FF;
-        border-radius: 10px;
     }
     
     .offer-info {

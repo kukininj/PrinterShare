@@ -116,6 +116,8 @@
 .menu>a {
     border-radius: 15px;
     padding: 10px;
+    text-decoration: none;
+    color: #484848;
 }
 
 .menu-wrapper {

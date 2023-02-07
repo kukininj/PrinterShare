@@ -14,6 +14,10 @@ main {
     margin-bottom: 30px;
 }
 
+main>*, header>* {
+    box-shadow: 0 0 16px #484848;
+}
+
 header {
    display: flex;
    flex-direction: row; 
@@ -21,7 +25,6 @@ header {
    padding: 0;
    gap: 10px;
    transition: 0;
-   overflow: hidden;
 }
 
 hr.vertical {
@@ -60,4 +63,10 @@ input:focus {
 
 .gold-hover:hover {
     background: #ffe48c40;
+}
+
+@media (max-width: 900px) {
+    main {
+        margin: 10px;
+    }
 }

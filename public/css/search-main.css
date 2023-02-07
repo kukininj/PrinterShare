@@ -38,6 +38,11 @@ main {
 .results {
     display: block;
     padding: 20px;
+    box-shadow: none;
+}
+
+.results>* {
+    box-shadow: 0 0 16px #484848;
 }
 
 .offer {
@@ -47,10 +52,11 @@ main {
     padding: 10px;
     margin: 10px 0;
     gap: 20px;
-    height: 200px;
+    height: fit-content;
     background: #FCEAFF;
     border-radius: 20px;
     font-family: Inter;
+    line-height: 0;
 }
 
 .offer>img {
@@ -71,6 +77,10 @@ main {
     flex-grow: 1;
 }
 
+.offer-info>.bottom {
+    color: #484848;
+}
+
 .top {
     display: flex;
     flex-wrap: wrap;
@@ -87,17 +97,15 @@ main {
         padding: 10px 25px;
         border-radius: 25px;
     }
-    
+
     .results {
         padding: 10px 0;
     }
-    
+
     .offer {
-        height: 120px;
         padding: 0 0;
         margin: 10px 0;
-        gap:2px;
-        overflow: hidden;
+        gap: 2px;
     }
 
     .offer>img {
@@ -105,7 +113,7 @@ main {
         width: 120px;
         background-color: #FEF6FF;
     }
-    
+
     .offer-info {
         gap: 0;
         padding: 5px 5px;

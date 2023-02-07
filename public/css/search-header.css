@@ -1,3 +1,6 @@
+header>img {
+    box-shadow: none;
+}
 .searchbar {
     display: flex;
     flex-direction: row;
@@ -124,7 +127,7 @@
     display: block;
     background-color: #FEF6FF;
     position: fixed;
-    right: calc(-30px - 1vw - 100%);
+    right: calc(0px - 150%);
     top: 1vw;
     padding: 15px 30px;
     border-radius: 35px;

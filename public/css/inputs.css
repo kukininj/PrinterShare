@@ -1,0 +1,134 @@
+.input_box>input {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    color: #484848;
+    border: 3px solid #636363;
+    border-radius: 35px;
+    padding: 15px 25px;
+    box-sizing: border-box;
+    background: none;
+}
+
+.login_box>input[type=submit] {
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 15px;
+
+    background: #FFBE52;
+    border: none;
+    border-radius: 35px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    color: #484848;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.default-form>button[type=submit] {
+    margin: 25px;
+    display: flex;
+    padding: 5px 15px;
+
+    background: #FFBE52;
+    border: none;
+    border-radius: 35px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    color: #484848;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    margin: auto;
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.select_box>select {
+
+    margin: 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5px 15px;
+
+    background: #FFBE52;
+    border: none;
+    border-radius: 35px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 44px;
+
+    transition: 0.3s;
+
+    color: #484848;
+
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.default-form {
+    display: flex;
+    flex-direction: column;
+    padding: 35px 35px;
+    border-radius: 35px;
+    gap: 10px;
+
+    background: #FCEAFF;
+
+    /* Inside auto layout */
+    flex: none;
+    flex-grow: 0;
+
+    /*font*/
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 20px;
+    color: #484848;
+}
+
+.default-form>*>p {
+    line-height: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+@media (max-width: 900px) {
+    .input_box>input {
+        width: 100%;
+    }
+}

@@ -45,18 +45,16 @@
             <line class="st1" x1="35" x2="35" y1="67" y2="62" />
             <line class="st1" x1="79" x2="86" y1="91" y2="91" />
         </svg>
-        <form class="login_box" action="/register.php">
+        <form class="login_box" action="/register" method="post">
             <div class="input_box">
-                <p>Nazwa użytkownika</p>
-                <input type="text" name="username" placeholder="jankaski" />
+                <p>Imie</p>
+                <input type="text" name="name" placeholder="Jan" />
+                <p>nazwisko</p>
+                <input type="text" name="surname" placeholder="kowalski" />
             </div>
             <div class="input_box">
                 <p>e-mail</p>
                 <input type="email" name="email" placeholder="jan.kowalski@jk.pl" />
-            </div>
-            <div class="input_box">
-                <p>Login</p>
-                <input type="text" name="login" placeholder="kowalski" />
             </div>
             <div class="input_box">
                 <p>Hasło</p>
@@ -65,8 +63,8 @@
             <div class="merchant_checkbox">
                 <p>Czy chcesz zostać sprzedawcą?</p>
                 <input type="checkbox" name="merchant">
-                <select class="area_pick" name="area">
-                    <option value="krakow">Kraków</option>
+                <select class="area_pick" name="area_name">
+                    <option value="Kraków">Kraków</option>
                 </select>
             </div>
             <input type="submit" value="Zarejestruj się">

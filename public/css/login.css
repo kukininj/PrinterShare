@@ -17,6 +17,7 @@ main {
     width: 25vw;
     height: 25vw;
     overflow: visible;
+    box-shadow: none;
 }
 
 .logo>path {

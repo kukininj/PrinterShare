@@ -10,6 +10,46 @@ class UserRepository extends Repository
      */
     private static array $users = [];
 
+    public static function &getUserByMerchantID(int $id_merchant): ?User
+    {
+        $user = array_filter(
+            self::$users,
+            fn (User $user): bool => $user->id_merchant === $id_merchant
+        );
+
+        if (count($user) > 0) // if any user with $id_merchant is already stored
+        {
+            $id = $user[0]->id_user;
+            return self::$users[$id];
+        }
+
+        $statement = self::database()->connect()->prepare("
+            SELECT users.*, dedicated_areas.area_name
+            FROM users
+            LEFT JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
+            LEFT JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
+            WHERE users.\"ID_merchant\"=:ID_merchant;
+        ");
+
+        $statement->bindParam('ID_merchant', $id_merchant, PDO::PARAM_STR);
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $user = new User(
+            $result['ID_user'],
+            $result['email'],
+            $result['password'],
+            $result['name'],
+            $result['surname'],
+            $result['profile_picture'],
+            $result['ID_merchant'],
+            $result['area_name']
+        );
+
+        self::$users[$user->id_user] = $user;
+        return $user;
+    }
     public static function &getUserByID(int $id_user): ?User
     {
         if (self::$users[$id_user] ?? false) {
@@ -44,7 +84,7 @@ class UserRepository extends Repository
         return $user;
     }
 
-    public static function &getCurrentUser(): ?User 
+    public static function &getCurrentUser(): ?User
     {
         $id_user = $_SESSION['ID_user'];
         return self::getUserByID($id_user);

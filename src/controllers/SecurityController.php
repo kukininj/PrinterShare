@@ -32,7 +32,7 @@ class SecurityController extends AppController
     public function logout()
     {
         unset($_SESSION['ID_user']);        
-        header('location: /login?failed');
+        header('location: /login');
     }
     public function register()
     {

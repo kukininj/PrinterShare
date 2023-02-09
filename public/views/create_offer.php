@@ -99,12 +99,12 @@
                 <input type="text" name="title">
             </div>
             <div class="input_box">
-                <p>Cena podstawowa:</p>
-                <input size="4" type="number" name="upfront_cost" min="0.00" max="10000.00" step="0.01" value="37" />
+                <p>Cena za godzinę(zł):</p>
+                <input size="4" type="number" name="hour_price" min="0.00" max="10000.00" step="0.01" value="37" />
             </div>
             <div class="input_box">
-                <p>Cena za minutę:</p>
-                <input size="4" type="number" name="per_min_cost" min="0.00" max="10000.00" step="0.01" value="21" />
+                <p>Cena za kg(zł):</p>
+                <input size="4" type="number" name="kg_price" min="0.00" max="10000.00" step="0.01" value="21" />
             </div>
             <div class="select_box">
                 <p>Typ drukarki:</p>
@@ -113,17 +113,9 @@
                     <option value="FDM">FDM</option>
                 </select>
             </div>
-            <div class="select_box">
-                <p>Filament:</p>
-                <select name="filament_type">
-                    <option selected value="PLA">PLA</option>
-                    <option value="ABS">ABS</option>
-                    <option value="TPU">TPU</option>
-                </select>
-            </div>
             <div class="input_box">
                 <p>Średnica dyszy:</p>
-                <input size="4" type="number" name="nozzle_diameter" min="0.1" max="1.0" step="0.1" value="0.3" />
+                <input size="4" type="number" name="diameter" min="0.1" max="1.0" step="0.1" value="0.3" />
             </div>
             <div class="input_box">
                 <p>Obrazek:</p>

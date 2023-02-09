@@ -36,4 +36,9 @@ class User
     {
         return strcmp($this->password_hash, $password) === 0;
     }
+
+    public function isMerchant(): bool
+    {
+        return !is_null($this->id_merchant);
+    }
 }

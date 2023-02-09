@@ -10,6 +10,46 @@ class UserRepository extends Repository
      */
     private static array $users = [];
 
+    public static function &getUserByID(int $id_user): ?User
+    {
+        if (self::$users[$id_user] ?? false) {
+            return self::$users[$id_user];
+        }
+
+        $statement = self::database()->connect()->prepare("
+            SELECT users.*, dedicated_areas.area_name
+            FROM users
+            JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
+            JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
+            WHERE users.\"ID_user\"=:ID_user;
+        ");
+
+        $statement->bindParam('ID_user', $id_user, PDO::PARAM_STR);
+        $statement->execute();
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        $user = new User(
+            $result['ID_user'],
+            $result['email'],
+            $result['password'],
+            $result['name'],
+            $result['surname'],
+            $result['profile_picture'],
+            $result['ID_merchant'],
+            $result['area_name']
+        );
+
+        self::$users[$user->id_user] = $user;
+        return $user;
+    }
+
+    public static function &getCurrentUser(): ?User 
+    {
+        $id_user = $_SESSION['ID_user'];
+        return self::getUserByID($id_user);
+    }
+
     public static function &getUserByEmail(string $email): ?User
     {
         $statement = self::database()->connect()->prepare("
@@ -105,7 +145,7 @@ class UserRepository extends Repository
         $user_data = $statement->fetch(PDO::FETCH_ASSOC);
         $id_merchant = $user_data['ID_merchant'] ?? throw new PDOException("invalid area_name");
 
-        
+
         $statement = self::database()->connect()->prepare("
             INSERT INTO users (email, password, \"ID_merchant\", name, surname, profile_picture)
             VALUES (:email, :password, :ID_merchant, :name, :surname, :profile_picture)

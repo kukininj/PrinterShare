@@ -12,6 +12,21 @@ class SecurityController extends AppController
         if (!$this->isPost()) {
             return $this->render('login');
         }
+
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        
+        try {
+            $user = UserRepository::getUserByEmail($email);
+            if (!$user->checkPassword($password)) {
+                header('location: /login?failed');
+            }
+            $_SESSION['ID_user'] = $user->id_user;
+                header('location: /profile');
+        }
+        catch (PDOException $except) {
+            header('location: /login?failed');
+        }
     }
     public function register()
     {

@@ -13,10 +13,11 @@ class UserRepository extends Repository
     public static function &getUserByEmail(string $email): ?User
     {
         $statement = self::database()->connect()->prepare("
-            SELECT users.*, merchant_details.*, dedicated_areas.area_name
+            SELECT users.*, dedicated_areas.area_name
             FROM users
-            JOIN merchant_details ON users.ID_merchant = merchant_details.ID_merchant
-            JOIN dedicated_areas ON merchant_details.ID_dedicated_area = dedicated_areas.ID_dedicated_area;
+            JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
+            JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
+            WHERE users.email=:email;
         ");
 
         $statement->bindParam('email', $email, PDO::PARAM_STR);

@@ -32,4 +32,8 @@ class User
         $this->area_name = $area_name;
     }
 
+    public function checkPassword(string $password): bool
+    {
+        return strcmp($this->password_hash, $password) === 0;
+    }
 }

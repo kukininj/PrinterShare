@@ -4,9 +4,17 @@ require_once 'AppController.php';
 
 class UserController extends AppController
 {
+    private function isLoggedIn(): bool
+    {
+        return isset($_SESSION['ID_user']);
+    }
+
     public function profile()
     {
-        $this->render('profile');
+        if ($this->isLoggedIn())
+            $this->render('profile');
+        else
+            header('location: /login');
     }
     public function pending()
     {

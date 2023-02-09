@@ -28,6 +28,12 @@ class SecurityController extends AppController
             header('location: /login?failed');
         }
     }
+
+    public function logout()
+    {
+        unset($_SESSION['ID_user']);        
+        header('location: /login?failed');
+    }
     public function register()
     {
         if (!$this->isPost())

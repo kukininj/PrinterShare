@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/public/css/inputs.css">
     <title>Nowa Oferta</title>
 </head>
-
 <body>
     <div class="background"></div>
     <header>

@@ -19,8 +19,8 @@ class UserRepository extends Repository
         $statement = self::database()->connect()->prepare("
             SELECT users.*, dedicated_areas.area_name
             FROM users
-            JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
-            JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
+            LEFT JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
+            LEFT JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
             WHERE users.\"ID_user\"=:ID_user;
         ");
 
@@ -55,8 +55,8 @@ class UserRepository extends Repository
         $statement = self::database()->connect()->prepare("
             SELECT users.*, dedicated_areas.area_name
             FROM users
-            JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
-            JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
+            LEFT JOIN merchant_details ON users.\"ID_merchant\" = merchant_details.\"ID_merchant\"
+            LEFT JOIN dedicated_areas ON merchant_details.\"ID_dedicated_area\" = dedicated_areas.\"ID_dedicated_area\"
             WHERE users.email=:email;
         ");
 

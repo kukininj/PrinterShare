@@ -1,1 +1,8 @@
 .vscode/
+.idea/.gitignore
+.idea/dataSources.xml
+.idea/jpa-buddy.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/PrinterShare.iml
+.idea/vcs.xml

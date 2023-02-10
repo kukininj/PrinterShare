@@ -17,6 +17,8 @@ Router::get('logout', SecurityController::class);
 Router::get('register', SecurityController::class);
 Router::post('register', SecurityController::class);
 
+Router::post('order', TransactionController::class);
+
 Router::get('offer', OfferController::class);
 Router::get('create_offer', OfferController::class);
 Router::get('search', OfferController::class);

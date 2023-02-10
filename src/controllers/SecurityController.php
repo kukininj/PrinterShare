@@ -15,23 +15,22 @@ class SecurityController extends AppController
 
         $email = $_POST['email'];
         $password = $_POST['password'];
-        
+
         try {
             $user = UserRepository::getUserByEmail($email);
-            if (!$user->checkPassword($password)) {
-                header('location: /login?failed');
-            }
-            $_SESSION['ID_user'] = $user->id_user;
+            if ($user->checkPassword($password)) {
+                $_SESSION['ID_user'] = $user->id_user;
                 header('location: /profile');
-        }
-        catch (PDOException $except) {
+            } else
+                header('location: /login?failed');
+        } catch (PDOException $except) {
             header('location: /login?failed');
         }
     }
 
     public function logout()
     {
-        unset($_SESSION['ID_user']);        
+        unset($_SESSION['ID_user']);
         header('location: /login');
     }
     public function register()
@@ -43,6 +42,7 @@ class SecurityController extends AppController
         $surname = $_POST['surname'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
         $profile_picture = '/public/resources/svg/person.svg';
 

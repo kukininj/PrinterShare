@@ -34,7 +34,7 @@ class User
 
     public function checkPassword(string $password): bool
     {
-        return strcmp($this->password_hash, $password) === 0;
+        return password_verify($password, $this->password_hash);
     }
 
     public function isMerchant(): bool

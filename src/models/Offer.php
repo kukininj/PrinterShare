@@ -19,6 +19,7 @@ class Offer
     public PrinterType $printer_type;
     public float $diameter;
     public string $title;
+    public string $picture;
 
     public function __construct(
         int $id_offer,
@@ -40,13 +41,14 @@ class Offer
         $this->printer_type = PrinterType::from($printer_type);
         $this->diameter = $diameter;
         $this->title = $title;
+        $this->picture = "/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg";
     }
-    
+
     public function getMerchant(): User
     {
         return UserRepository::getUserByMerchantID($this->id_merchant);
     }
-    
+
     public function getOffer(): Offer
     {
         return OfferRepository::getOfferByID($this->id_offer);

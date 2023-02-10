@@ -36,9 +36,11 @@ $current_user = UserRepository::getCurrentUser();
             </div>
             <div class="select_box">
                 <p>Typ drukarki:</p>
-                <select name="printer_type">
+                <select name="printer_type" id="">
                     <option selected value="FFF">FFF</option>
-                    <option value="FDM">FDM</option>
+                    <option value="CFF">CFF</option>
+                    <option value="SLA">SLA</option>
+                    <option value="DLP">DLP</option>
                 </select>
             </div>
             <div class="input_box">

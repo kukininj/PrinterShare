@@ -53,4 +53,9 @@ class Offer
     {
         return OfferRepository::getOfferByID($this->id_offer);
     }
+
+    public function getPricingString(): string
+    {
+        return $this->kg_price."zł/kg + ".$this->hour_price."zł/h";
+    }
 }

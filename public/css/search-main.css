@@ -101,6 +101,7 @@ main {
 .widmo {
     filter: blur(2px);
     cursor: default;
+    overflow: hidden;
 }
 .widmo>* {
     filter: blur(8px);

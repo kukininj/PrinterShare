@@ -26,7 +26,7 @@ $merchant = $offer->getMerchant();
     <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="/public/css/search-header.css">
     <link rel="stylesheet" href="/public/css/offer-main.css">
-    <script src="/public/js/offer.js" defer></script>
+    <link rel="stylesheet" href="/public/css/inputs.css">
     <title><?= $offer->title; ?></title>
 </head>
 
@@ -42,16 +42,16 @@ $merchant = $offer->getMerchant();
             </div>
             <div class="offer-content">
                 <div class="top">
-                    <h2 id="offer_title">Tytuł ogłoszenia</h2>
-                    <p id="offer_pricing">21zł + 37gr/min</p>
-                    <p id="offer_diameter">średnica dyszy: 0.3</p>
-                    <p id="offer_type">typ drukarki: FFF</p>
+                    <h2 id="offer_title"><?= $offer->title; ?></h2>
+                    <p id="offer_pricing"><?= $offer->getPricingString(); ?></p>
+                    <p id="offer_diameter">średnica dyszy: <?= $offer->diameter; ?></p>
+                    <p id="offer_type">typ drukarki: <?= $offer->printer_type->value; ?></p>
                 </div>
                 <div class="bottom">
-                    <p id="offer_area">Wadowice</p>
-                    <p id="offer_date">06.02.2023</p>
+                    <p id="offer_area">Kraków</p>
+                    <p id="offer_date"><?= $offer->date_added->format('Y-m-d G:i:s'); ?></p>
                 </div>
-                <button class="order-button">Zamów</button>
+                <a class="generic-button gold-bg" id="order_button" href="#order_overlay">Zamów</a>
             </div>
         </div>
         <div class="sidebar">
@@ -71,6 +71,34 @@ $merchant = $offer->getMerchant();
             </div>
         </div>
     </main>
+    <div id="order_overlay" class="overlay">
+        <div class="popup">
+            <h2 id="offer_title"><?= $offer->title; ?></h2>
+            <p id="offer_pricing"><?= $offer->getPricingString(); ?></p>
+            <p id="offer_diameter">średnica dyszy: <?= $offer->diameter; ?></p>
+            <p id="offer_type">typ drukarki: <?= $offer->printer_type->value; ?></p>
+            <form action="/order" method="post" class="order-form">
+                <input type="text" name="id_user" hidden value="<?= $current_user->id_user; ?>">
+                <input type="text" name="id_offer" hidden value="<?= $offer->id_offer; ?>">
+                <div class="input_box">
+                    <input type="file" name="model" id="">
+                </div>
+                <textarea name="notes" id="" cols="30" rows="10"></textarea>
+                <div class="buttons">
+                    <a href="#" class="generic-button gold-focus gold-hover">Anuluj</a>
+                    <button type="submit" class="generic-button gold-bg">Wyślij</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <div id="success" class="overlay">
+
+        <div class="popup">
+            <h2>Zamówienie złożone pomyślnie</h2>
+            <a href="#" class="generic-button gold-focus gold-hover">Ok</a>
+        </div>
+    </div>
     <script>
         let offer = <?php
                     echo json_encode($offer);

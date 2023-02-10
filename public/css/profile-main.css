@@ -157,19 +157,19 @@ main {
 }
 
 .status-blue {
-    color: #00C4F2;
+    fill: #00C4F2;
 }
 
 .status-yellow {
-    color: #F9F871;
+    fill: #F9F871;
 }
 
 .status-green {
-    color: #3BBEAA;
+    fill: #3BBEAA;
 }
 
 .status-red {
-    color: #D94C33;
+    fill: #D94C33;
 }
 
 @media (max-width: 900px) {

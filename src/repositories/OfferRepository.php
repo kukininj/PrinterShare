@@ -109,4 +109,43 @@ class OfferRepository extends Repository
 
         return self::$offers[$id_offer];
     }
+
+    /**
+     * 
+     * @param string $titleQuery
+     * @param PrinterType|null $typeFilter
+     * @param float|null $diameter
+     * @return Offer[]
+     */
+    public static function search(string $titleQuery, ?PrinterType $typeFilter, ?float $diameter): array
+    {
+        $statement = self::database()->connect()->prepare("
+            SELECT offers.*
+            FROM offers
+            WHERE title @@ to_tsquery(:titleQuery);
+        ");
+
+        $statement->bindParam("titleQuery", $titleQuery, PDO::PARAM_STR);
+
+        $statement->execute();
+
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        $offers = array_map(
+            fn ($offer): Offer => new Offer(
+                $offer['ID_offer'],
+                $offer['ID_merchant'],
+                $offer['date_added'],
+                $offer['date_edit'],
+                $offer['hour_price'],
+                $offer['kg_price'],
+                $offer['printer_type'],
+                $offer['diameter'],
+                $offer['title'],
+            ),
+            $results
+        );
+
+        return $offers;
+    }
 }

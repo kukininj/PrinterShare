@@ -12,7 +12,24 @@ class OfferController extends AppController
     }
     public function search()
     {
-        $this->render('offer_search');
+        if ($this->isGet()) {
+            $this->render('offer_search');
+            return;
+        }
+
+        $query = $_POST['query'];
+        $diameter = $_POST['diameter'];
+        $printer_type = $_POST['printer_type'];
+
+        try {
+            $results = OfferRepository::search($query, PrinterType::from($printer_type), $diameter);
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $encoded = json_encode($results);
+            echo $encoded;
+        } catch (PDOException $except) {
+        }
     }
 
     public function create_offer()
@@ -34,7 +51,7 @@ class OfferController extends AppController
 
         if ($user->isMerchant()) {
             $ID_merchant = $user->id_merchant;
-            $date_added = new DateTime();
+            $date_added = new DateTime("now", new DateTimeZone("Europe/Warsaw"));
             $hour_price = floatval($_POST['hour_price']);
             $kg_price = floatval($_POST['kg_price']);
             $printer_type = PrinterType::from($_POST['printer_type']);

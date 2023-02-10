@@ -8,7 +8,11 @@ class OfferController extends AppController
 {
     public function offer()
     {
-        $this->render('offer');
+        $user = UserRepository::getCurrentUser() ?? false;
+        if ($user && $user->isMerchant())
+            $this->render('offer_merchant');
+        else
+            $this->render('offer_user');
     }
     public function search()
     {

@@ -73,7 +73,8 @@ class OfferRepository extends Repository
     {
         $statement = self::database()->connect()->prepare("
             SELECT offers.* 
-            WHERE offers.ID_offer=:id_offer
+            FROM offers
+            WHERE offers.\"ID_offer\"=:id_offer
             LIMIT 1;
         ");
 

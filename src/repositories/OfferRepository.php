@@ -10,7 +10,7 @@ class OfferRepository extends Repository
      */
     private static array $offers = [];
 
-    public static function &addOffer(
+    public static function addOffer(
         int $ID_merchant,
         DateTime $date_added,
         float $hour_price,
@@ -20,24 +20,24 @@ class OfferRepository extends Repository
         string $title,
     ): ?Offer {
         $statement = self::database()->connect()->prepare("
-        INSERT INTO public.\"Offers\" 
+        INSERT INTO public.\"offers\" 
             (\"ID_offer\", \"ID_merchant\", date_added, date_edit, hour_price, kg_price, diameter, title, printer_type)
         VALUES (
             DEFAULT, 
             :id_merchant::integer, 
-            to_timestamp(:date_added)::date, 
-            null::date, 
+            :date_added::timestamp, 
+            :date_added::timestamp, 
             :hour_price::numeric(10, 2), 
             :kg_price::numeric(10, 2),
             :diameter::double precision, 
             :title::varchar(255), 
             :printer_type::printer_type)
-        RETURNING \"Offers\".*;
+        RETURNING \"offers\".*;
         ");
 
         $statement->bindParam('id_merchant', $ID_merchant, PDO::PARAM_INT);
 
-        $date_added = $date_added->getTimestamp();
+        $date_added = $date_added->format("Y-m-d G:i:s");
         $statement->bindParam('date_added', $date_added, PDO::PARAM_INT);
 
         $statement->bindParam('hour_price', $hour_price, PDO::PARAM_STR);
@@ -72,8 +72,8 @@ class OfferRepository extends Repository
     private static function selectOfferByID(int $id_offer): ?Offer
     {
         $statement = self::database()->connect()->prepare("
-            SELECT Offers.* 
-            WHERE Offers.ID_offer=:id_offer
+            SELECT offers.* 
+            WHERE offers.ID_offer=:id_offer
             LIMIT 1;
         ");
 
@@ -98,7 +98,7 @@ class OfferRepository extends Repository
         return $offer;
     }
 
-    public static function &getOfferByID(int $id_offer): ?Offer
+    public static function getOfferByID(int $id_offer): ?Offer
     {
         if (self::$offers[$id_offer] ?? false) {
             return self::$offers[$id_offer];

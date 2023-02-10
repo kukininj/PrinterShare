@@ -10,7 +10,7 @@ class UserRepository extends Repository
      */
     private static array $users = [];
 
-    public static function &getUserByMerchantID(int $id_merchant): ?User
+    public static function getUserByMerchantID(int $id_merchant): ?User
     {
         $user = array_filter(
             self::$users,
@@ -50,8 +50,10 @@ class UserRepository extends Repository
         self::$users[$user->id_user] = $user;
         return $user;
     }
-    public static function &getUserByID(int $id_user): ?User
+    public static function getUserByID(?int $id_user): ?User
     {
+        if (is_null($id_user))
+            return null;
         if (self::$users[$id_user] ?? false) {
             return self::$users[$id_user];
         }
@@ -84,13 +86,13 @@ class UserRepository extends Repository
         return $user;
     }
 
-    public static function &getCurrentUser(): ?User
+    public static function getCurrentUser(): ?User
     {
-        $id_user = $_SESSION['ID_user'];
+        $id_user = $_SESSION['ID_user'] ?? null;
         return self::getUserByID($id_user);
     }
 
-    public static function &getUserByEmail(string $email): ?User
+    public static function getUserByEmail(string $email): ?User
     {
         $statement = self::database()->connect()->prepare("
             SELECT users.*, dedicated_areas.area_name
@@ -124,7 +126,7 @@ class UserRepository extends Repository
         }
     }
 
-    public static function &addUser(
+    public static function addUser(
         string $email,
         string $password_hash,
         string $name,
@@ -165,7 +167,7 @@ class UserRepository extends Repository
         return $user;
     }
 
-    public static function &addMerchant(
+    public static function addMerchant(
         string $email,
         string $password_hash,
         string $name,

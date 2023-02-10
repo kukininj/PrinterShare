@@ -12,7 +12,7 @@ const filterForm = document.getElementById("filter_form");
 adjustHeader();
 fillSearchBar();
 
-function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, printerType) {
+function createOffer(id_offer, title, hour_price, kg_price, area, date, picture, diameter, printer_type) {
 
     let offer = document.createElement("div");
     offer.classList.add("offer");
@@ -23,6 +23,9 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, p
 
     let offer_info = document.createElement("div");
     offer_info.classList.add("offer-info");
+    offer_info.onclick = () => {
+        document.location = `/offer?id_offer=${id_offer}`;
+    }
 
     let top = document.createElement("div");
     top.classList.add("top");
@@ -33,7 +36,7 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, p
 
     let offer_pricing = document.createElement("p");
     offer_pricing.classList.add("offer-pricing");
-    offer_pricing.innerText = `${kgPrice}zł/kg + ${hourPrice}zł/h`;
+    offer_pricing.innerText = `${kg_price}zł/kg + ${hour_price}zł/h`;
     
     let middle = document.createElement("div");
     
@@ -41,7 +44,7 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, p
     nozzle.innerText = `średnica dyszy: ${diameter}`;
 
     let type = document.createElement("p");
-    type.innerText = `typ drukarki: ${printerType}`;
+    type.innerText = `typ drukarki: ${printer_type}`;
 
     let bottom = document.createElement("div");
     bottom.classList.add("bottom");
@@ -96,6 +99,7 @@ function loadSearchResults(searchResults) {
     for (offer of searchResults) {
         results.appendChild(
             createOffer(
+                offer.id_offer,
                 offer.title,
                 offer.hour_price,
                 offer.kg_price,

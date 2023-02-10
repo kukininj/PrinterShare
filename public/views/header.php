@@ -30,7 +30,7 @@
 </form>
 <?php
 if (is_null($current_user))
-    goto nomenu;
+    goto anonymous;
 ?>
 <div class="header-menu">
     <a href="/profile" class="profile gold-focus gold-hover">
@@ -72,7 +72,16 @@ if (is_null($current_user))
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
         </svg>
     </button>
-    <?php
-    nomenu:
-    ?>
 </div>
+<?php
+goto loggedin;
+anonymous:
+?>
+<div class="header-menu">
+    <a href="/login" class="profile gold-focus gold-hover">
+        Zaloguj się
+    </a>
+</div>
+<?php
+loggedin:
+?>

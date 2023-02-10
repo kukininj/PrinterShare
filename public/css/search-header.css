@@ -116,7 +116,7 @@ header>img {
     font-size: large;
 }
 
-.menu>a {
+.menu>a, .header-menu>a {
     border-radius: 15px;
     padding: 10px;
     text-decoration: none;

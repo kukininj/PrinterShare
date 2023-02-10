@@ -68,7 +68,7 @@ main {
     background: #FCEAFF;
     border-radius: 20px;
     font-family: Inter;
-    line-height: 0;
+    line-height: 1;
 }
 
 .offer>img {
@@ -91,6 +91,10 @@ main {
 
 .offer-info>.bottom {
     color: #484848;
+}
+
+.offer-info>*>* {
+    margin: 0;
 }
 
 .top {

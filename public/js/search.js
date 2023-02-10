@@ -12,7 +12,7 @@ const filterForm = document.getElementById("filter_form");
 adjustHeader();
 fillSearchBar();
 
-function createOffer(title, hourPrice, kgPrice, area, date, picture) {
+function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, printerType) {
 
     let offer = document.createElement("div");
     offer.classList.add("offer");
@@ -34,6 +34,14 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture) {
     let offer_pricing = document.createElement("p");
     offer_pricing.classList.add("offer-pricing");
     offer_pricing.innerText = `${kgPrice}/kg + ${hourPrice}/h`;
+    
+    let middle = document.createElement("div");
+    
+    let nozzle = document.createElement("p");
+    nozzle.innerText = `średnica dyszy: ${diameter}`;
+
+    let type = document.createElement("p");
+    type.innerText = `typ drukarki: ${printerType}`;
 
     let bottom = document.createElement("div");
     bottom.classList.add("bottom");
@@ -50,10 +58,14 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture) {
     offer.appendChild(offer_info);
 
     offer_info.appendChild(top);
+    offer_info.appendChild(middle);
     offer_info.appendChild(bottom);
 
     top.appendChild(offer_title);
     top.appendChild(offer_pricing);
+    
+    middle.appendChild(nozzle);
+    middle.appendChild(type);
 
     bottom.appendChild(offer_area);
     bottom.appendChild(offer_date);
@@ -89,7 +101,9 @@ function loadSearchResults(searchResults) {
                 offer.kg_price,
                 offer.area,
                 offer.date_added,
-                offer.picture
+                offer.picture,
+                offer.diameter,
+                offer.printer_type
             ));
     }
 }

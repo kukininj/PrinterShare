@@ -12,6 +12,8 @@ $current_user = UserRepository::getCurrentUser();
     <link rel="stylesheet" href="/public/css/main.css">
     <link rel="stylesheet" href="/public/css/search-header.css">
     <link rel="stylesheet" href="/public/css/search-main.css">
+
+    <script src="/public/js/search.js" defer></script>
     <title>Wyszukiwarka</title>
 </head>
 
@@ -21,10 +23,10 @@ $current_user = UserRepository::getCurrentUser();
         <?php include("header.php"); ?>
     </header>
     <main>
-        <form class="filter">
+        <form id="filter_form" class="filter">
             <div class="option">
                 <p>Typ drukarki</p>
-                <select name="pritner_type" id="">
+                <select name="printer_type" id="">
                     <option value="FFF">FFF</option>
                     <option value="CFF">CFF</option>
                     <option value="SLA">SLA</option>
@@ -35,15 +37,8 @@ $current_user = UserRepository::getCurrentUser();
                 <p>Średnica dyszy</p>
                 <input size="5" type="number" name="diameter" id="diameter" min="0.1" max="1.0" step="0.1" value="0.3">
             </div>
-            <div class="option">
-                <p>Kolor filamentu</p>
-                <select name="pritner_name" id="">
-                    <option value="niebieski">Niebieski</option>
-                    <option value="czerwony">Czerwony</option>
-                </select>
-            </div>
         </form>
-        <div class="results">
+        <div class="results" id="results_container">
             <div class="offer">
                 <img src="" alt="" srcset="/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg">
                 <div class="offer-info">

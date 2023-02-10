@@ -11,14 +11,14 @@ enum PrinterType: String
 class Offer
 {
     public int $id_offer;
-    private int $id_merchant;
-    private DateTime $date_added;
-    private ?DateTime $date_edit;
-    private float $hour_price;
-    private float $kg_price;
-    private PrinterType $printer_type;
-    private float $diameter;
-    private string $title;
+    public int $id_merchant;
+    public DateTime $date_added;
+    public ?DateTime $date_edit;
+    public float $hour_price;
+    public float $kg_price;
+    public PrinterType $printer_type;
+    public float $diameter;
+    public string $title;
 
     public function __construct(
         int $id_offer,

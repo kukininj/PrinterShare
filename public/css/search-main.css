@@ -97,6 +97,14 @@ main {
     margin: 0;
 }
 
+.widmo {
+    filter: blur(2px);
+}
+.widmo>* {
+    filter: blur(8px);
+}
+
+
 .top {
     display: flex;
     flex-wrap: wrap;

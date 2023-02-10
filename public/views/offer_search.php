@@ -39,7 +39,7 @@ $current_user = UserRepository::getCurrentUser();
             </div>
         </form>
         <div class="results" id="results_container">
-            <div class="offer">
+            <div class="offer widmo">
                 <img src="" alt="" srcset="/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg">
                 <div class="offer-info">
                     <div class="top">
@@ -52,7 +52,7 @@ $current_user = UserRepository::getCurrentUser();
                     </div>
                 </div>
             </div>
-            <div class="offer">
+            <div class="offer widmo">
                 <img src="" alt="" srcset="/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg">
                 <div class="offer-info">
                     <div class="top">
@@ -65,7 +65,7 @@ $current_user = UserRepository::getCurrentUser();
                     </div>
                 </div>
             </div>
-            <div class="offer">
+            <div class="offer widmo">
                 <img src="" alt="" srcset="/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg">
                 <div class="offer-info">
                     <div class="top">
@@ -78,7 +78,7 @@ $current_user = UserRepository::getCurrentUser();
                     </div>
                 </div>
             </div>
-            <div class="offer">
+            <div class="offer widmo">
                 <img src="" alt="" srcset="/public/resources/svg/sam_baines/981320_cartesian_enclosed_fdm_printer_icon.svg">
                 <div class="offer-info">
                     <div class="top">

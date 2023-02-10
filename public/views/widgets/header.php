@@ -48,25 +48,16 @@ if (is_null($current_user))
     </a>
     <button class="menu-icon gold-focus gold-hover">
         <div class="menu-wrapper">
-            <div class="menu">
-                <h2>Jan Nowak</h2>
-                <a href="/profile" class="gold-focus gold-hover">Profil</a>
-                <hr>
-                <a href="/pending" class="gold-focus gold-hover">Oczekujące</a>
-                <hr>
-                <a href="/finished" class="gold-focus gold-hover">Zakończone</a>
-                <hr>
-                <a href="/favourites" class="gold-focus gold-hover" style="display: <?= $current_user->isMerchant() ? "none" : "initial"; ?>">
-                    Ulubione
-                </a>
-                <a href="/create_offer" class="gold-focus gold-hover" style="display: <?= $current_user->isMerchant() ? "initial" : "none"; ?>">
-                    Nowa Oferta
-                </a>
-                <hr>
-                <a href="/work_in_progress" class="gold-focus gold-hover">Opinie</a>
-                <hr>
-                <a href="/logout" class="gold-focus gold-hover">Wyloguj się</a>
-            </div>
+            <h2>
+                <?= $current_user->name . " " . $current_user->surname; ?>
+            </h2>
+            <?php
+            if ($current_user->isMerchant()) {
+                include("merchant_menu.php");
+            } else {
+                include("user_menu.php");
+            }
+            ?>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />

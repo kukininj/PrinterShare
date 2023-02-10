@@ -30,4 +30,20 @@ class Transaction
         $this->status = $status;
         $this->notes = $notes;
     }
+
+    public function getStatusColorClass(): string
+    {
+        switch ($this->status) {
+            case TransactionStatus::AwaitingRepsonseFromClient:
+            case TransactionStatus::AwaitingResponseFromMerchant:
+                return "status-blue";
+            case TransactionStatus::Printing:
+                return "status-yellow";
+            case TransactionStatus::FinishedSucessfully:
+                return "status-green";
+            case TransactionStatus::Rejected:
+                return "status-red";
+        }
+        return "";
+    }
 }

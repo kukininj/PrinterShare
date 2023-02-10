@@ -108,6 +108,7 @@ main {
     order: 1;
     align-self: stretch;
     flex-grow: 1;
+    overflow: hidden;
 }
 
 .ticket {
@@ -153,6 +154,22 @@ main {
     order: 1;
     align-self: stretch;
     flex-basis: 100%;
+}
+
+.status-blue {
+    color: #00C4F2;
+}
+
+.status-yellow {
+    color: #F9F871;
+}
+
+.status-green {
+    color: #3BBEAA;
+}
+
+.status-red {
+    color: #D94C33;
 }
 
 @media (max-width: 900px) {

@@ -1,5 +1,8 @@
 <?php
 $current_user = UserRepository::getCurrentUser();
+
+$user_transactions = TransactionRepository::getTransactionsBy_id_user($current_user->id_user);
+
 ?>
 
 <!DOCTYPE html>
@@ -66,24 +69,22 @@ $current_user = UserRepository::getCurrentUser();
                     <a href="/pending">Więcej</a>
                 </div>
                 <div class="ticket-container">
-                    <div class="ticket">
-                        <img src="/public/resources/svg/sam_baines/981306_amf_amf format_file_file format_format_icon.svg" alt="">
-                        <div>
-                            <p>przyklad.stl</p>
-                            <svg class="ticket-bule">
-                                <circle cx="10" cy="10" r="10" />
-                            </svg>
+                    <?
+                    /**
+                     * @var Transaction $t
+                     */
+                    foreach ($user_transactions as $t) :
+                    ?>
+                        <div class="ticket">
+                            <img src="/public/resources/svg/sam_baines/981306_amf_amf format_file_file format_format_icon.svg" alt="">
+                            <div>
+                                <p><?= $t->notes; ?></p>
+                                <svg class="<?= $t->getStatusColorClass(); ?>">
+                                    <circle cx="10" cy="10" r="10" />
+                                </svg>
+                            </div>
                         </div>
-                    </div>
-                    <div class="ticket">
-                        <img src="/public/resources/svg/sam_baines/981306_amf_amf format_file_file format_format_icon.svg" alt="">
-                        <div>
-                            <p>przyklad.stl</p>
-                            <svg class="ticket-bule">
-                                <circle cx="10" cy="10" r="10" />
-                            </svg>
-                        </div>
-                    </div>
+                    <? endforeach ?>
                 </div>
             </div>
             <div class="finished">
@@ -92,24 +93,6 @@ $current_user = UserRepository::getCurrentUser();
                     <a href="/finished">Więcej</a>
                 </div>
                 <div class="ticket-container">
-                    <div class="ticket">
-                        <img src="/public/resources/svg/sam_baines/981306_amf_amf format_file_file format_format_icon.svg" alt="">
-                        <div>
-                            <p>przyklad.stl</p>
-                            <svg class="ticket-bule">
-                                <circle cx="10" cy="10" r="10" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="ticket">
-                        <img src="/public/resources/svg/sam_baines/981306_amf_amf format_file_file format_format_icon.svg" alt="">
-                        <div>
-                            <p>przyklad.stl</p>
-                            <svg class="ticket-bule">
-                                <circle cx="10" cy="10" r="10" />
-                            </svg>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

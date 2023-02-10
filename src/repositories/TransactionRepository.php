@@ -52,4 +52,39 @@ class TransactionRepository extends Repository
 
         self::$offers[$transaction->id_transaction] = $transaction;
     }
+
+    /**
+     * @return Transaction[]
+     */
+    public static function getTransactionsBy_id_user(int $id_user): array
+    {
+        $statement = self::database()->connect()->prepare("
+        SELECT t.*
+        FROM public.transactions t
+        WHERE t.\"ID_user\"=:id_user
+        LIMIT 10;
+        ");
+
+        $statement->bindParam("id_user", $id_user);
+
+        $statement->execute();
+
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$results)
+            return [];
+
+        $transactions = array_map(
+            fn ($transaction): Transaction => new Transaction(
+                $transaction['ID_transaction'],
+                $transaction['ID_user'],
+                $transaction['ID_offer'],
+                TransactionStatus::from($transaction['status']),
+                $transaction['notes'],
+            ),
+            $results
+        );
+
+        return $transactions;
+    }
 }

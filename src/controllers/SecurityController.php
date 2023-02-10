@@ -17,8 +17,8 @@ class SecurityController extends AppController
         $password = $_POST['password'];
 
         try {
-            $user = UserRepository::getUserByEmail($email);
-            if ($user->checkPassword($password)) {
+            $user = UserRepository::getUserByEmail($email) ?? false;
+            if ($user && $user->checkPassword($password)) {
                 $_SESSION['ID_user'] = $user->id_user;
                 header('location: /profile');
             } else
@@ -30,7 +30,7 @@ class SecurityController extends AppController
 
     public function logout()
     {
-        unset($_SESSION['ID_user']);
+        session_destroy();
         header('location: /login');
     }
     public function register()

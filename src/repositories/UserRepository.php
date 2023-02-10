@@ -107,6 +107,10 @@ class UserRepository extends Repository
 
         $result = $statement->fetch(PDO::FETCH_ASSOC);
 
+        if (!$result) {
+            return null;
+        }
+
         $user = new User(
             $result['ID_user'],
             $result['email'],

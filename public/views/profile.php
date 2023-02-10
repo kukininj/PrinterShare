@@ -18,7 +18,7 @@ $current_user = UserRepository::getCurrentUser();
 <body>
     <div class="background"></div>
     <header>
-        <?php include("header.php"); ?>
+        <?php include("widgets/header.php"); ?>
     </header>
     <main>
         <div class="side-panel">

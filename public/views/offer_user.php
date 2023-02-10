@@ -33,7 +33,7 @@ $merchant = $offer->getMerchant();
 <body>
     <div class="background"></div>
     <header>
-        <?php include('header.php'); ?>
+        <?php include('widgets/header.php'); ?>
     </header>
     <main>
         <div class="offer">

@@ -33,7 +33,7 @@ function createOffer(title, hourPrice, kgPrice, area, date, picture, diameter, p
 
     let offer_pricing = document.createElement("p");
     offer_pricing.classList.add("offer-pricing");
-    offer_pricing.innerText = `${kgPrice}/kg + ${hourPrice}/h`;
+    offer_pricing.innerText = `${kgPrice}zł/kg + ${hourPrice}zł/h`;
     
     let middle = document.createElement("div");
     

@@ -5,10 +5,10 @@ Aplikacja umożliwia zdalne zlecanie zadań do druku 2D lub 3D w bibliotekach lu
 Istnieją 3 typy użytkowników:
  - administrator - zarządza całym systemem lub jego częścią
  - użytkownik - zleca sprzedawcom zadania wydruku swoich modeli
- - sprzedawca - udostępnia swoją drukarkę za odpowiednią cenę
+ - sprzedawca - udostępnia swoją drukarkę za odpowiednią cenę
 
 Użytkownik:
- - zakładanie konta, wykorzystując np kartę biblioteczną.
+ - zakładanie konta, wykorzystując np kartę biblioteczną.
  - możliwość wyszukiwania ofert po:
   * lokalizacji
   * ocenie sprzedawcy
@@ -16,18 +16,18 @@ Użytkownik:
   * modelu
   * parametrach
   * dostępnym filamencie/tuszu
- - możliwość wystawiania ocen sprzedawcom
+ - możliwość wystawiania ocen sprzedawcom
 
 Sprzedawca:
  - wycenia druk zleconego modelu
- - ustala lokalizacje swoich punktów druku
+ - ustala lokalizacje swoich punktów druku
  - podaje modele, parametry swoich drukarek i filamentu/tuszu
  - zarządza zleceniami
 
 Administrator:
  - dostęp do całej platformy lub części
  - możliwy podział na regiony w których dany administrator ma prawa zarządzania systemem
- - możliwość edycji ofert sprzedawców
+ - możliwość edycji ofert sprzedawców
  - usuwanie/edycja opinii
  - usuwanie/edycja profili użytkowników/sprzedawców
 
